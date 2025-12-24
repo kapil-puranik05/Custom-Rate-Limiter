@@ -31,7 +31,7 @@ func InterceptRequest() gin.HandlerFunc {
 				database.Client.Expire(database.Ctx, header, 1*time.Minute)
 			}
 		}
-		if count > 200 {
+		if count > 10 {
 			c.JSON(http.StatusTooManyRequests, gin.H{
 				"error": "Rate limit exceeded. Try again in a minute.",
 			})
